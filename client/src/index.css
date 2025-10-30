@@ -1,0 +1,281 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  width: 980px;
+  margin: 0 auto;
+  border: #535bf2 2px solid ;
+  border-radius: 12px;
+  padding: 10px 20px 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: left;
+
+}
+h2 {
+  color: #32dde9;
+  font-style: italic;
+  font-family: cursive;
+}
+h3 {
+  color: #ff69b4;
+}
+p {
+  font-size: large;
+}
+
+
+.welcome-text {
+  font-size: 2.5rem;       /* big, prominent text */
+  font-weight: 700;        /* bold */
+  color: #ff69b4;          /* soft pink accent */
+  text-align: center;
+  margin: 20px 0;          /* spacing above and below */
+  line-height: 1.3;
+  letter-spacing: 1px;
+}
+
+.intro-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;             /* dark text for contrast */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.intro-section p {
+  font-size: 1.1rem;
+  color: #555;             /* slightly lighter text */
+  max-width: 600px;        /* limits line length for readability */
+  margin: 10px auto;       /* center and space paragraphs */
+  text-align: center;
+  line-height: 1.6;
+}
+
+
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+nav {
+  float:right;
+  font-size: x-large;
+}
+/* Contact Page Container */
+.contact-page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Page Heading */
+.contact-page h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: black; 
+}
+
+/* Contact Info Panel */
+.contact-info-panel {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  background-color: #aae9ed; 
+}
+
+.contact-info-panel h3 {
+  margin-bottom: 1rem;
+  color: #ff69b4; /* darker pink */
+}
+
+/* Contact Form */
+.contact-form {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff0f5; /* very light pink */
+}
+
+.contact-form h3 {
+  margin-bottom: 1rem;
+  color: #ff69b4;
+}
+
+/* Form Inputs and Textarea */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Submit Button */
+.contact-form button {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  background-color: #ffb6c1; /* light pink */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #ff69b4; /* darker pink on hover */
+}
+
+.projects-page {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+
+
+/* Grid layout for projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual project card */
+.project-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #fff0f5; /* very light pink */
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Project images */
+.project-card img {
+  width: 100%;          /* fill card width */
+  height: 200px;        /* fixed height for all images */
+  object-fit: cover;    /* crop or scale to fill without distortion */
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+
+/* Project title */
+.project-card h3 {
+  margin: 0.5rem 0 0.3rem 0;
+  color: #ff69b4;
+}
+
+/* Project short description */
+.project-card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Modal overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Modal content */
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  text-align: center;
+  color: #fff;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
