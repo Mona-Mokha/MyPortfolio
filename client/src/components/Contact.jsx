@@ -34,10 +34,12 @@ export default function Contact() {
       </div>
 
       {/* Interactive Form */}
-      <div className="contact-form">
+      <div className="form-container">
         <h3>Send a Message</h3>
         <form onSubmit={handleSubmit}>
+          <label htmlFor="firstName">First Name</label>
           <input
+            id="firstName"
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -45,7 +47,10 @@ export default function Contact() {
             onChange={handleChange}
             required
           />
+
+          <label htmlFor="lastName">Last Name</label>
           <input
+            id="lastName"
             type="text"
             name="lastName"
             placeholder="Last Name"
@@ -53,7 +58,10 @@ export default function Contact() {
             onChange={handleChange}
             required
           />
+
+          <label htmlFor="contactNumber">Contact Number</label>
           <input
+            id="contactNumber"
             type="tel"
             name="contactNumber"
             placeholder="Contact Number"
@@ -61,7 +69,10 @@ export default function Contact() {
             onChange={handleChange}
             required
           />
+
+          <label htmlFor="email">Email Address</label>
           <input
+            id="email"
             type="email"
             name="email"
             placeholder="Email Address"
@@ -69,14 +80,20 @@ export default function Contact() {
             onChange={handleChange}
             required
           />
+
+          <label htmlFor="message">Message</label>
           <textarea
+            id="message"
             name="message"
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
             required
           />
-          <button type="submit">Send</button>
+
+          <div className="actions">
+            <button type="submit">Send</button>
+          </div>
         </form>
       </div>
     </div>

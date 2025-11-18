@@ -1,29 +1,69 @@
+// src/components/Layout.jsx
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-import { Link } from 'react-router-dom';
+const Layout = ({ children }) => {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  const handleSignOut = () => {
+    logout();
+    navigate("/");
+  };
 
-function Layout() {
   return (
     <>
-      <header className="flex items-center justify-between p-4 shadow-md bg-white">
-        {/* Logo + site name */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Logo" className="w-10 h-10" />
-        
-        </Link>
-        <nav>
-          <Link to="/">Home</Link> | 
-          <Link to="/about">About Me</Link> | 
-          <Link to="/projects">Projects</Link> | 
-          <Link to="/education">Education</Link> | 
-          <Link to="/services">Services</Link> | 
-          <Link to="/contact">Contact Me</Link>
+      {/* Navbar full width */}
+      <header>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="container">
+            <Link className="navbar-brand" to="/">
+              <img src="/logo.png" alt="Logo" className="w-10 h-10" />
+            </Link>
+
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav me-auto">
+                <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="/projects">Projects</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="/education">Education</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="/services">Services</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
+              </ul>
+
+              <ul className="navbar-nav ms-auto">
+                {user ? (
+                  <>
+                    <li className="nav-item nav-link">Welcome, {user.name}</li>
+                    <li className="nav-item">
+                      <button className="btn btn-outline-danger" onClick={handleSignOut}>
+                        Sign Out
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="nav-item">
+                      <Link className="btn btn-outline-primary me-2" to="/signin">Sign In</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="btn btn-primary" to="/signup">Sign Up</Link>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          </div>
         </nav>
-        <br/>
-        <hr />
       </header>
+
+      {/* Page container */}
+      <div className="page-container">
+        <main>{children}</main>
+      </div>
     </>
   );
-}
+};
 
 export default Layout;

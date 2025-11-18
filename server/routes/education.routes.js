@@ -1,14 +1,14 @@
 import express from "express";
-import authCtrl from "../controllers/auth.controller.js";
-import { getAllEducations, getEducationById, createEducation, updateEducation, deleteEducation } from "../controllers/education.controller.js";
+import * as educationCtrl from "../controllers/education.controller.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getAllEducations);
-router.get("/:id", getEducationById);
-router.post("/", authCtrl.requireSignin, createEducation);
-router.put("/:id", authCtrl.requireSignin, updateEducation);
-router.delete("/:id", authCtrl.requireSignin, deleteEducation);
+router.get("/", educationCtrl.getAllEducations);
+router.get("/:id", educationCtrl.getEducationById);
+router.post("/", auth.requireSignin, auth.isAdmin, educationCtrl.createEducation);
+router.put("/:id", auth.requireSignin, auth.isAdmin, educationCtrl.updateEducation);
+router.delete("/:id", auth.requireSignin, auth.isAdmin, educationCtrl.deleteEducation);
 
 export default router;
 

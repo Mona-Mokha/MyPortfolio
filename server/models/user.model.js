@@ -1,11 +1,8 @@
 import mongoose from "mongoose";
 import crypto from "crypto";
+
 const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    trim: true,
-    required: "Name is required",
-  },
+  name: { type: String, trim: true, required: "Name is required" },
   email: {
     type: String,
     trim: true,
@@ -13,37 +10,32 @@ const UserSchema = new mongoose.Schema({
     match: [/.+\@.+\..+/, "Please fill a valid email address"],
     required: "Email is required",
   },
-  created: {
-    type: Date,
-    default: Date.now,
-  },
-  updated: {
-    type: Date,
-    default: Date.now,
-  },
-  hashed_password: {
-    type: String,
-    required: "Password is required",
-  },
+  hashed_password: { type: String, required: "Password is required" },
   salt: String,
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
+  created: { type: Date, default: Date.now },
+  updated: { type: Date, default: Date.now },
 });
+
 UserSchema.virtual("password")
   .set(function (password) {
     this._password = password;
     this.salt = this.makeSalt();
     this.hashed_password = this.encryptPassword(password);
-    //this.hashed_password = password;
   })
   .get(function () {
     return this._password;
   });
+
 UserSchema.path("hashed_password").validate(function (v) {
-  if (this._password && this._password.length < 6) {
+  if (this._password && this._password.length < 6)
     this.invalidate("password", "Password must be at least 6 characters.");
-  }
-  if (this.isNew && !this._password) {
+  if (this.isNew && !this._password)
     this.invalidate("password", "Password is required");
-  }
 }, null);
 
 UserSchema.methods = {
@@ -53,10 +45,7 @@ UserSchema.methods = {
   encryptPassword: function (password) {
     if (!password) return "";
     try {
-      return crypto
-        .createHmac("sha1", this.salt)
-        .update(password)
-        .digest("hex");
+      return crypto.createHmac("sha1", this.salt).update(password).digest("hex");
     } catch (err) {
       return "";
     }
@@ -67,4 +56,3 @@ UserSchema.methods = {
 };
 
 export default mongoose.model("User", UserSchema);
-

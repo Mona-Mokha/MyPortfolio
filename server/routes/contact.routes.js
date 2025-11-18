@@ -1,16 +1,13 @@
 import express from 'express';
-import authCtrl from "../controllers/auth.controller.js";
-import {
-  getAllContacts, getContactById,
-  createContact, updateContact, deleteContact
-} from '../controllers/contact.controller.js';
+import * as contactCtrl from '../controllers/contact.controller.js';
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get('/', getAllContacts);
-router.get('/:id', getContactById);
-router.post("/", authCtrl.requireSignin, createContact);
-router.put("/:id", authCtrl.requireSignin, updateContact);
-router.delete("/:id", authCtrl.requireSignin, deleteContact);
+router.get('/', contactCtrl.getAllContacts);
+router.get('/:id', contactCtrl.getContactById);
+router.post('/', auth.requireSignin, auth.isAdmin, contactCtrl.createContact);
+router.put('/:id', auth.requireSignin, auth.isAdmin, contactCtrl.updateContact);
+router.delete('/:id', auth.requireSignin, auth.isAdmin, contactCtrl.deleteContact);
 
 export default router;

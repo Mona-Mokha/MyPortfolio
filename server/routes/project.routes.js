@@ -1,14 +1,13 @@
 import express from "express";
-import authCtrl from "../controllers/auth.controller.js";
-import { getAllProjects, getProjectById, createProject, updateProject, deleteProject } from "../controllers/project.controller.js";
+import * as projectCtrl from "../controllers/project.controller.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getAllProjects);
-router.get("/:id", getProjectById);
-router.post("/", authCtrl.requireSignin, createProject);
-router.put("/:id", authCtrl.requireSignin, updateProject);
-router.delete("/:id", authCtrl.requireSignin, deleteProject);
+router.get("/", projectCtrl.getAllProjects);
+router.get("/:id", projectCtrl.getProjectById);
+router.post("/", auth.requireSignin, auth.isAdmin, projectCtrl.createProject);
+router.put("/:id", auth.requireSignin, auth.isAdmin, projectCtrl.updateProject);
+router.delete("/:id", auth.requireSignin, auth.isAdmin, projectCtrl.deleteProject);
 
 export default router;
-

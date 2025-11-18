@@ -1,28 +1,28 @@
 {
-  "name": "mern_skeleton",
+  "name": "comp229-401-portfolio",
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
-  "author": "Blessing Ajiboye",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/preset-env": "^7.28.3",
-    "babel-loader": "^10.0.0",
-    "nodemon": "^3.1.10"
-  },
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "dev": "concurrently 'vite' \"nodemon server.js\"",
-    "build": "vite build",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "start": "npm-run-all --parallel start:client start:server",
+    "start:server": "npm --prefix server run dev",
+    "start:client": "npm --prefix client run dev"
   },
   "dependencies": {
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
     "body-parser": "^2.2.0",
+    "bootstrap": "^5.3.8",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-jwt": "^8.5.1",
     "global": "^4.4.0",
@@ -30,6 +30,25 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "method-override": "^3.0.0",
-    "mongoose": "^8.18.2"
+    "mongoose": "^8.18.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@eslint/js": "^9.36.0",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.3",
+    "babel-loader": "^10.0.0",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.4.0",
+    "nodemon": "^3.1.10",
+    "vite": "^7.1.7"
   }
 }
