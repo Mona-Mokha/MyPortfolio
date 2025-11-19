@@ -91,60 +91,6 @@
   color: #fff;
 }
 
-/* Projects section styles */
-/* Page title */
-.page-title {
-  font-size: 2.4rem;
-  margin-bottom: 2rem;
-  color: #121212; /* your beautiful blue */
-}
-
-/* Wrapper that arranges cards nicely */
-.project-cards-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 20px;
-}
-
-/* Project cards */
-.project-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  transition: all 0.25s ease-in-out;
-  border: 1px solid #e5e5e5;
-}
-
-/* Hover effect */
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-}
-
-/* Titles */
-.project-title {
-  color: #0d0e0d;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-/* Description */
-.project-description {
-  color: #333;
-  margin-bottom: 15px;
-}
-
-/* Dates */
-.project-dates {
-  color: #555;
-  font-size: 0.95rem;
-}
-
-/* Container for spacing */
-.project-list-container {
-  max-width: 1000px;
-}
-
 /* Responsive nice spacing */
 @media (max-width: 768px) {
   .project-card {
