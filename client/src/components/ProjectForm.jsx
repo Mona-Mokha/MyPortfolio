@@ -4,8 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 
 const ProjectForm = () => {
-    const [project, setProject] = useState({ name: "", description: "", startDate: "", endDate: "" });
-    const { id } = useParams();
+const [project, setProject] = useState({ title: "", firstname: "", lastname: "", email: "", completion: "", description: "" });    const { id } = useParams();
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
@@ -29,29 +28,41 @@ const ProjectForm = () => {
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
             body: JSON.stringify(project)
         });
-        navigate("/projects-list");
+        navigate("/ProjectsList");
     };
 
     return (
         <div className="form-container">
-            <h2>{id ? "Update Project" : "Create Project"}</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name</label>
-                <input id="name" name="name" type="text" value={project.name} placeholder="Name" onChange={handleChange} required />
+<h2>{id ? "Update Project" : "Create Project"}</h2>
+<form onSubmit={handleSubmit}>
+<label htmlFor="title">Title</label>
+<input id="title" name="title" type="text" value={project.title} placeholder="Title" onChange={handleChange} required />
 
-                <label htmlFor="description">Description</label>
-                <input id="description" name="description" type="text" value={project.description} placeholder="Description" onChange={handleChange} required />
 
-                <label htmlFor="startDate">Start Date</label>
-                <input id="startDate" name="startDate" type="date" value={project.startDate?.split("T")[0]} onChange={handleChange} required />
+<label htmlFor="firstname">First Name</label>
+<input id="firstname" name="firstname" type="text" value={project.firstname} placeholder="First name" onChange={handleChange} required />
 
-                <label htmlFor="endDate">End Date</label>
-                <input id="endDate" name="endDate" type="date" value={project.endDate?.split("T")[0]} onChange={handleChange} required />
 
-                <div className="actions">
-                  <button type="submit">{id ? "Update" : "Create"}</button>
-                </div>
-            </form>
+<label htmlFor="lastname">Last Name</label>
+<input id="lastname" name="lastname" type="text" value={project.lastname} placeholder="Last name" onChange={handleChange} required />
+
+
+<label htmlFor="email">Email</label>
+<input id="email" name="email" type="email" value={project.email} placeholder="Email" onChange={handleChange} required />
+
+
+<label htmlFor="completion">Completion Date</label>
+<input id="completion" name="completion" type="date" value={project.completion?.split("T")[0] || project.completion || ""} onChange={handleChange} required />
+
+
+<label htmlFor="description">Description</label>
+<textarea id="description" name="description" value={project.description} placeholder="Description" onChange={handleChange} required />
+
+
+<div className="actions">
+<button type="submit">{id ? "Update" : "Create"}</button>
+</div>
+</form>
         </div>
     );
 };

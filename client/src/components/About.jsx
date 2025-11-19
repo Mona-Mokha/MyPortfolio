@@ -1,6 +1,8 @@
+import '../index.css';
+
 export default function About() {
     return (
-        <div>
+        <div style={{ textAlign: 'center' }}>
             <h2>About Me</h2>
             <p>
                 I am Mona Mokhalalati. I am a Software Engineering Technology student specializing in

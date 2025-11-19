@@ -13,6 +13,7 @@
 
 body {
   margin: 0;
+  align-content: auto;
   padding: 0;
   width: 100%;
   background-color: #f9f9f9; /* light background */
@@ -41,6 +42,7 @@ p { font-size: 1rem; color: #333; }
   width: 95%;
   margin: 20px auto;
   padding: 20px;
+ 
 }
 
 /* Welcome & Intro Sections */
@@ -79,7 +81,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #32dde9;
   color: #fff;
   cursor: pointer;
   transition: border-color 0.25s, background 0.3s;
@@ -174,7 +176,7 @@ button:hover {
   margin-bottom: 0.5rem;
 }
 .project-card h3 { color: #ff69b4; }
-.project-card p { color: #333; }
+.project-card p { color: #070707; }
 
 /* Navbar (kept perfect) */
 .navbar {
@@ -204,5 +206,5 @@ button:hover {
 .navbar-nav.me-auto li .nav-link:hover { color: #ff69b4; }
 .navbar-nav.ms-auto { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; }
 .navbar-nav.ms-auto li.nav-link { background-color: #f397dd; color: #fff; border-radius: 8px; padding: 0.5rem 0.8rem; font-weight: 600; }
-.navbar-nav.ms-auto li button { padding: 0.5rem 0.8rem; font-weight: 600; border-radius: 8px; background-color: #1a1a1a; color: #fff; border: none; cursor: pointer; }
+.navbar-nav.ms-auto li button { padding: 0.5rem 0.8rem; font-weight: 600; border-radius: 8px; background-color: #ade1ef; color: #fff; border: none; cursor: pointer; }
 .navbar-nav.ms-auto li button:hover { background-color: #ff69b4; }

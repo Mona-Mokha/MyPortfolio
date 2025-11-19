@@ -1,140 +1,115 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext.jsx';
-
-
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext.jsx";
 
 const ProjectsList = () => {
-    const [projects, setProjects] = useState([]);
-    const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const token = localStorage.getItem('token');
+  const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
-                if (!token) {
-                    navigate('/login');
-                    return;
-                }
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-                const response = await fetch('/api/projects', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error(data.message)
-                }
-
-                const data = await response.json();
-                setProjects(data);
-
-            } catch (error) {
-                console.error(`Error fetching projects: ${error.message}`);
-            }
-        }
-        fetchProjects();
-    }, [])
-
-    const handleDelete = async (projectId) => {
-        const token = localStorage.getItem('token');
-
-        if (!token) {
-            navigate('/login');
-            console.error('No token found, redirecting to login');
-            return;
-        }
-
-        try {
-            const response = await fetch(`/api/projects/${projectId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to delete project');
-            }
-
-            setProjects(prevProjects => prevProjects.filter(project => project._id !== projectId));
-
-        } catch (error) {
-            console.error(`Error deleting project: ${error.message}`);
-        }
+    if (!token || !user) {
+      navigate("/signin");
+      return;
     }
 
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch("/api/projects", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-        return (
-                <div className="container mt-4">
-                        <h1 className="text-center">Projects</h1>
-{user && user.role === "admin" && (
-  <button
-        className="btn btn-primary mb-3"
-    onClick={() => navigate('/project-details')}
-  >
-    Create New Project
-  </button>
-)}
+        if (!response.ok) throw new Error("Failed to fetch projects");
 
-                        {projects.length > 0 ? (
-                <>
-                                        <table className="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Actions</th>
-                            </tr>
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error("Error fetching projects:", error.message);
+      }
+    };
 
-                        </thead>
-                        <tbody>
-                            {projects.map((project) => (
-                                <tr key={project._id}>
-                                    <td>{project.name}</td>
-                                    <td>{project.description}</td>
-                                    <td>{new Date(project.startDate).toLocaleDateString()}</td>
-                                    <td>{new Date(project.endDate).toLocaleDateString()}</td>
-                                    {/* <td>{project.startDate}</td> */}
-                                    <td>
-  {user && user.role === "admin" && (
-    <>
-      <button
-                className="btn btn-secondary me-2"
-        onClick={() => navigate(`/project-details/${project._id}`)}
-      >
-        Update
-      </button>
-      <button
-        className="btn btn-danger"
-        onClick={() => handleDelete(project._id)}
-      >
-        Delete
-      </button>
-    </>
-  )}
-</td>
+    fetchProjects();
+  }, [user, navigate]);
 
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </>)
-                :
-                (
-                    <>
-                        <p className='text-center'>No projects available</p>
-                    </>
-                )}
+  const handleDelete = async (projectId) => {
+    const token = localStorage.getItem("token");
+    if (!token) return navigate("/signin");
 
+    try {
+      const response = await fetch(`/api/projects/${projectId}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!response.ok) throw new Error("Failed");
+
+      setProjects((prev) => prev.filter((p) => p._id !== projectId));
+    } catch (error) {
+      console.error("Delete error:", error.message);
+    }
+  };
+
+  return (
+    <div className="container mt-5 project-list-container">
+      <h1 className="text-center page-title">Projects</h1>
+
+      {projects.length > 0 ? (
+        <div className="project-cards-wrapper">
+          {projects.map((project) => (
+            <div key={project._id} className="project-card shadow-sm">
+              <h3 className="project-title">{project.name}</h3>
+              <p className="project-description">{project.description}</p>
+
+              <p className="project-dates">
+                <strong>Start:</strong>{" "}
+                {new Date(project.startDate).toLocaleDateString()} <br />
+                <strong>End:</strong>{" "}
+                {new Date(project.endDate).toLocaleDateString()}
+              </p>
+
+              {user?.role === "admin" ? (
+                <div className="d-flex gap-2 mt-3">
+                  <button
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={() => navigate(`/ProjectsForm/${project._id}`)}
+                  >
+                    Update
+                  </button>
+
+                  <button
+                    className="btn btn-outline-danger btn-sm"
+                    onClick={() => handleDelete(project._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ) : (
+                <p className="text-muted fst-italic mt-2">View Only</p>
+              )}
+            </div>
+          ))}
         </div>
-    )
-}
+      ) : (
+        <p className="text-center text-muted mt-4">No projects available.</p>
+      )}
+
+      {user?.role === "admin" && (
+        <div className="text-center mt-4">
+          <button
+            className="btn btn-success px-4"
+            onClick={() => navigate("/ProjectsForm")}
+          >
+            Create Project
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default ProjectsList;

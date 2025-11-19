@@ -6,9 +6,12 @@ import ProjectsList from './components/ProjectsList';
 import ProjectForm from './components/ProjectForm';
 import Education from './components/Education';
 import Services from './components/Services';
-import Contact from './components/Contact';
+import ContactsList from './components/ContactsList';
+import ContactForm from './components/ContactForm';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
+
+
 
 const MainRouter = () => {
   return (
@@ -17,13 +20,18 @@ const MainRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />   
         <Route path="/about" element={<About />} />
-        <Route path="/projects-list" element={<ProjectsList />} />
-        <Route path="/project-details/:id?" element={<ProjectForm />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/education" element={<Education />} />
+        <Route path="/projectsList" element={<ProjectsList />} />
+        <Route path="/ProjectsForm" element={<ProjectForm />} />
+        <Route path="/ProjectsForm/:id" element={<ProjectForm />} />
+        {/* Contacts routes: list and form (new/edit) */}
+        <Route path="/contacts" element={<ContactsList />} />
+        <Route path="/contacts/new" element={<ContactForm />} />
+        <Route path="/contacts/:id" element={<ContactForm />} />
+        
       </Routes>
     </div>
   );
