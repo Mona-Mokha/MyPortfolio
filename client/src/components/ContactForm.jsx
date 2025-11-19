@@ -1,78 +1,54 @@
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-export default function ContactForm() {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
+const ContactForm = () => {
+  const [contact, setContact] = useState({ firstname: '', lastname: '', email: '' });
+  const { id } = useParams();
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch('/api/contacts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstname, lastname, email }),
-      });
-
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        const msg = body?.error || body?.message || 'Failed to save contact';
-        throw new Error(msg);
-      }
-
-      // success — navigate to contacts list
-      navigate('/contacts');
-    } catch (err) {
-      console.error(err);
-      alert('Unable to save contact: ' + err.message);
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/contacts/${id}`, { headers: { Authorization: `Bearer ${token}` }})
+        .then(res => res.json())
+        .then(data => setContact(data))
+        .catch(err => console.error(err));
     }
+  }, [id, token]);
+
+  const handleChange = e => setContact({ ...contact, [e.target.name]: e.target.value });
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const method = id ? 'PUT' : 'POST';
+    const url = id ? `/api/contacts/${id}` : '/api/contacts';
+    await fetch(url, {
+      method,
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify(contact)
+    });
+    navigate('/contacts');
   };
 
   return (
-    <div className="contact-page">
-      <h2>Contact Me</h2>
+    <div className="form-container">
+      <h2>{id ? 'Update Contact' : 'Create Contact'}</h2>
+      <form onSubmit={handleSubmit}>
+        <label>First Name</label>
+        <input name="firstname" value={contact.firstname} onChange={handleChange} required />
 
-      {/* Contact Info Panel */}
-      <div className="contact-info-panel">
-        <h3>Contact Information</h3>
-        <p>Email: mjmokha@gmail.com</p>
-        <p>Phone: +1 647 803 5878</p>
-        <p>Address: 1275 wintergreen place, Milton Canada</p>
-      </div>
-      {/* Interactive Form */}
-      <div className="form-container">
-        <h2>Contact Form</h2>
-        <form onSubmit={handleSubmit}>
-          <label>First Name:</label>
-          <input
-            type="text"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-            required
-          />
-          <label>Last Name:</label>
-          <input
-            type="text"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-            required
-          />
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <div className="actions">
-            <button type="submit">Add Contact</button>
-          </div>
-        </form>
-      </div>
+        <label>Last Name</label>
+        <input name="lastname" value={contact.lastname} onChange={handleChange} required />
+
+        <label>Email</label>
+        <input type="email" name="email" value={contact.email} onChange={handleChange} required />
+
+        <div className="actions">
+          <button type="submit">{id ? 'Update' : 'Create'}</button>
+        </div>
+      </form>
     </div>
   );
-}
+};
+
+export default ContactForm;

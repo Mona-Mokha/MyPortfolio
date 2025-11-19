@@ -32,9 +32,9 @@ export default function Services() {
   ];
 
   return (
-    <div className="p-6">
+    <div className="services-page p-6">
       <h2 className="text-2xl font-bold mb-6">My Services</h2>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="services-grid grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {services.map((service, index) => (
           <div
             key={index}

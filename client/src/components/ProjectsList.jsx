@@ -55,28 +55,37 @@ const ProjectsList = () => {
   };
 
   return (
-    <div className="container mt-5 project-list-container">
-      <h1 className="text-center page-title">Projects</h1>
-
+    <div className="form-container mt-5">
+      <h1 className="text-center mb-4">Projects</h1>
+{user?.role === "admin" && (
+        <div className="create-action text-center mt-4">
+          <button
+            className="btn btn-success px-4"
+            onClick={() => navigate("/projects/form")}
+          >
+            Create Project
+          </button>
+        </div>
+      )}
       {projects.length > 0 ? (
-        <div className="project-cards-wrapper">
+        <div className="list-container">
           {projects.map((project) => (
-            <div key={project._id} className="project-card shadow-sm">
-              <h3 className="project-title">{project.name}</h3>
-              <p className="project-description">{project.description}</p>
+            <div key={project._id} className="list-card">
+              <h3 className="item-title">{project.title}</h3>
+              <p className="item-description">{project.description}</p>
 
-              <p className="project-dates">
-                <strong>Start:</strong>{" "}
-                {new Date(project.startDate).toLocaleDateString()} <br />
-                <strong>End:</strong>{" "}
-                {new Date(project.endDate).toLocaleDateString()}
+              <p className="item-meta">
+                <strong>Completion:</strong>{" "}
+                {project.completion ? new Date(project.completion).toLocaleDateString() : '—'}
               </p>
 
-              {user?.role === "admin" ? (
-                <div className="d-flex gap-2 mt-3">
+              {user?.role === 'admin' && (
+
+
+                <div className="item-actions">
                   <button
                     className="btn btn-outline-primary btn-sm"
-                    onClick={() => navigate(`/ProjectsForm/${project._id}`)}
+                    onClick={() => navigate(`/projects/form/${project._id}`)}
                   >
                     Update
                   </button>
@@ -88,9 +97,7 @@ const ProjectsList = () => {
                     Delete
                   </button>
                 </div>
-              ) : (
-                <p className="text-muted fst-italic mt-2">View Only</p>
-              )}
+              ) }
             </div>
           ))}
         </div>
@@ -98,16 +105,7 @@ const ProjectsList = () => {
         <p className="text-center text-muted mt-4">No projects available.</p>
       )}
 
-      {user?.role === "admin" && (
-        <div className="text-center mt-4">
-          <button
-            className="btn btn-success px-4"
-            onClick={() => navigate("/ProjectsForm")}
-          >
-            Create Project
-          </button>
-        </div>
-      )}
+      
     </div>
   );
 };

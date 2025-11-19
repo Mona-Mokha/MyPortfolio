@@ -28,7 +28,7 @@ const [project, setProject] = useState({ title: "", firstname: "", lastname: "",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
             body: JSON.stringify(project)
         });
-        navigate("/ProjectsList");
+        navigate("/projects");
     };
 
     return (

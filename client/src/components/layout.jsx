@@ -26,10 +26,10 @@ const Layout = ({ children }) => {
             <ul className="navbar-nav me-auto">
               <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/about">About Me</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/projectsList">Projects</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/projects">Projects</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/education">Education</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/services">Services</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/contacts">Contact</Link></li>
             </ul>
 
             <ul className="navbar-nav ms-auto">

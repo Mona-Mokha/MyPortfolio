@@ -5,6 +5,11 @@
   color-scheme: light dark;
   color: #333;           /* dark text for light background */
   background-color: #f9f9f9; /* light background */
+  /* Theme variables - change these to update button colors globally */
+  --btn-bg: #1f7a8c; /* primary button background */
+  --btn-bg-hover: #166064; /* hover */
+  --btn-outline: #1f7a8c; /* outline/button border color */
+  --btn-accent: #556bff; /* alternative accent color for links/buttons */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -24,13 +29,19 @@ body {
 a {
   font-weight: 500;
   color: #646cff;
-  text-decoration: none;
-}
-a:hover {
-  color: #535bf2;
+  background: transparent;
 }
 
-/* Headings & Paragraphs */
+.btn-outline {
+  background: transparent;
+  color: var(--btn-outline);
+  border: 1px solid var(--btn-outline);
+}
+h:hover {
+  color: #535bf2;
+  background: transparent;
+}
+
 h1 { font-size: 3.2em; line-height: 1.1; }
 h2 { color: #32dde9; font-style: italic; font-family: cursive; }
 h3 { color: #ff69b4; }
@@ -73,7 +84,7 @@ p { font-size: 1rem; color: #333; }
   line-height: 1.6;
 }
 
-/* Buttons */
+/* Buttons (use CSS variables at top to change colors globally) */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -81,14 +92,14 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #32dde9;
+  background-color: var(--btn-bg);
   color: #fff;
   cursor: pointer;
   transition: border-color 0.25s, background 0.3s;
 }
 button:hover {
-  border-color: #646cff;
-  background-color: #ff69b4;
+  border-color: rgba(0,0,0,0.06);
+  background-color: var(--btn-bg-hover);
 }
 
 /* Forms */
@@ -208,3 +219,48 @@ button:hover {
 .navbar-nav.ms-auto li.nav-link { background-color: #f397dd; color: #fff; border-radius: 8px; padding: 0.5rem 0.8rem; font-weight: 600; }
 .navbar-nav.ms-auto li button { padding: 0.5rem 0.8rem; font-weight: 600; border-radius: 8px; background-color: #ade1ef; color: #fff; border: none; cursor: pointer; }
 .navbar-nav.ms-auto li button:hover { background-color: #ff69b4; }
+
+/* Unified list/card and table styles for Projects, Contacts, Education */
+.list-container {
+  display: grid;
+  /* Wider cards: aim for two columns on desktop for a more balanced, portfolio feel */
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.list-container .list-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 26px rgba(16,24,40,0.05);
+  transition: transform 0.16s, box-shadow 0.16s;
+}
+.list-container .list-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(16,24,40,0.08); }
+
+.item-title { font-weight: 700; color: #1f7a8c; margin-bottom: 0.45rem; font-size: 1.06rem; }
+.item-meta { color: #444; font-size: 0.98rem; margin-bottom: 0.5rem; }
+.item-description { color: #222; font-size: 1rem; margin-bottom: 0.85rem; line-height: 1.5; }
+
+.item-actions { display: flex; gap: 0.5rem; align-items: center; }
+.item-actions .btn { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+.list-container .btn + .btn { margin-left: 0.5rem; }
+
+/* Optional table layout */
+.list-table-wrapper { overflow:auto; }
+.list-table { width:100%; border-collapse: collapse; }
+.list-table th, .list-table td { padding: 0.75rem 0.9rem; border-bottom: 1px solid #eef1f5; text-align: left; }
+.list-table th { background: #fbfdfe; color:#111; font-weight:700; }
+.list-table tr:hover td { background: #fafcfd; }
+
+@media (max-width: 900px) {
+  /* collapse to single column below ~900px so cards remain readable on tablets/phones */
+  .list-container { grid-template-columns: 1fr; }
+}
+
+/* Utility: small gap under Create buttons on list pages */
+.create-action { margin-bottom: 1rem; }
+
+/* Services page centering and max width */
+.services-page { max-width: 1100px; margin: 0 auto; padding: 1rem; text-align: center; }
+.services-page .services-grid { display: grid; gap: 1rem; justify-items: center; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }

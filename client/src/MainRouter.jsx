@@ -1,13 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
-import Layout from './components/layout';
+import ContactsList from './components/ContactsList';
+import ContactForm from './components/ContactForm';
+import EducationForm from './components/EducationForm';
+import EducationsList from './components/EducationsList';
+import Layout from './components/Layout';
 import Home from './components/Home';
 import About from './components/About';
 import ProjectsList from './components/ProjectsList';
 import ProjectForm from './components/ProjectForm';
-import Education from './components/Education';
 import Services from './components/Services';
-import ContactsList from './components/ContactsList';
-import ContactForm from './components/ContactForm';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 
@@ -23,15 +24,18 @@ const MainRouter = () => {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/projectsList" element={<ProjectsList />} />
-        <Route path="/ProjectsForm" element={<ProjectForm />} />
-        <Route path="/ProjectsForm/:id" element={<ProjectForm />} />
-        {/* Contacts routes: list and form (new/edit) */}
+        <Route path="/education" element={<EducationsList />} />
+        <Route path="/education/new" element={<EducationForm />} /> 
+        <Route path="/education/new/:id" element={<EducationForm />} />
+        <Route path="/education/:id" element={<EducationForm />} />
+        <Route path="/projects" element={<ProjectsList />} />
+        <Route path="/projects/form" element={<ProjectForm />} />
+        <Route path="/projects/form/:id" element={<ProjectForm />} />
+        <Route path="/contacts/new" element={<ContactForm />} />
+        <Route path="/contacts/:id" element={<ContactForm />} />
         <Route path="/contacts" element={<ContactsList />} />
         <Route path="/contacts/new" element={<ContactForm />} />
         <Route path="/contacts/:id" element={<ContactForm />} />
-        
       </Routes>
     </div>
   );
