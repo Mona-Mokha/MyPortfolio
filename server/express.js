@@ -5,6 +5,7 @@ import compress from "compression";
 import cors from "cors";
 import helmet from "helmet";
 
+
 const app = express();
 // Middlewares
 app.use(express.json());
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
 app.use(cors());
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {

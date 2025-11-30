@@ -1633,7 +1633,7 @@ commander@^2.20.0:
   resolved "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-"comp229-401-portfolio@file:C:\\Users\\memej\\OneDrive\\Desktop\\Centennial\\COMP229-Web Development\\Assignment3\\MyPortfolio\\client":
+"comp229-401-portfolio@file:C:\\Users\\memej\\OneDrive\\Desktop\\Centennial\\COMP229-Web Development\\Assignment4\\MyPortfolio\\client":
   version "0.0.0"
   resolved "file:client"
 
@@ -3157,6 +3157,10 @@ serve-static@^2.2.0:
     escape-html "^1.0.3"
     parseurl "^1.3.3"
     send "^1.2.0"
+
+"server@file:C:\\Users\\memej\\OneDrive\\Desktop\\Centennial\\COMP229-Web Development\\Assignment4\\MyPortfolio\\server":
+  version "1.0.0"
+  resolved "file:server"
 
 set-cookie-parser@^2.6.0:
   version "2.7.2"
