@@ -198,6 +198,12 @@ button:hover {
 .navbar-nav.me-auto li .nav-link:hover { color: #ff69b4; }
 .navbar-nav.ms-auto { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; }
 .navbar-nav.ms-auto li.nav-link { background-color: #f397dd; color: #fff; border-radius: 8px; padding: 0.5rem 0.8rem; font-weight: 600; }
+
+/* Ensure navbar buttons have consistent sizing and spacing */
+.navbar .btn {
+  padding: 0.55rem 0.9rem;
+  font-size: 0.95rem;
+}
 .navbar-nav.ms-auto li button { padding: 0.5rem 0.8rem; font-weight: 600; border-radius: 8px; background-color: #ade1ef; color: #fff; border: none; cursor: pointer; }
 .navbar-nav.ms-auto li button:hover { background-color: #ff69b4; }
 

@@ -1,6 +1,7 @@
 // src/pages/Signup.jsx
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Signup = ({ setUser }) => {
   const [form, setForm] = useState({
@@ -10,6 +11,7 @@ const Signup = ({ setUser }) => {
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleChange = (e) => {
     // don't call e.preventDefault() on change handlers
@@ -53,11 +55,10 @@ const Signup = ({ setUser }) => {
 
       const data = await signinRes.json();
       // API returns { token, user: { _id, name, email, role } }
-      localStorage.setItem("token", data.token);
-      // canonical name key:
-      localStorage.setItem("userName", data.user.name);
-      localStorage.setItem("userRole", data.user.role ?? "user");
+      // Use the AuthContext login so context + localStorage are updated
+      if (login) login(data.token, data.user.name, data.user.role ?? "user");
 
+      // keep backward-compatibility if a parent passed setUser
       if (setUser) setUser({ name: data.user.name, role: data.user.role });
 
       navigate("/");
