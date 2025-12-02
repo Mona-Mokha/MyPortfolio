@@ -15,50 +15,61 @@ const Layout = ({ children }) => {
     <>
       
         <header>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container">
-          <Link className="navbar-brand" to="/">
-            <img src="/logo.png" alt="Logo" className="w-10 h-10" />
-          </Link>
+          <nav className="navbar navbar-expand-md navbar-light bg-light">
+  <div className="container">
+    <Link className="navbar-brand" to="/">
+      <img src="/logo.png" alt="Logo" className="w-10 h-10" />
+    </Link>
 
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
+    <button
+      className="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto">
-              <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/about">About Me</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/projects">Projects</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/education">Education</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/services">Services</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/contacts">Contact</Link></li>
-            </ul>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav me-auto mb-2 mb-md-0">
+        <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/about">About Me</Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/projects">Projects</Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/education">Education</Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/services">Services</Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/contacts">Contact</Link></li>
+      </ul>
 
-            <ul className="navbar-nav ms-auto">
-              {user ? (
-            <>
-              <li className="nav-item nav-link">Welcome, {user.name}</li>
-              <li className="nav-item">
-                <button className="btn btn-outline-danger me-2" onClick={handleSignOut}>
-                  Sign Out
-                </button>
-              </li>
-            </>
-              ) : (
-            <>
-              <li className="nav-item">
-                <Link className="btn btn-outline-primary me-2" to="/signin">Sign In</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="btn btn-primary" to="/signup">Sign Up</Link>
-              </li>
-            </>
-              )}
-            </ul>
-          </div>
-            </div>
-          </nav>
+      <ul className="navbar-nav ms-auto mb-2 mb-md-0">
+        {user ? (
+          <>
+            <li className="nav-item w-100 text-start mb-2 mb-md-0">
+              <span className="nav-link">Welcome, {user.name}</span>
+            </li>
+            <li className="nav-item w-100 text-start mb-2 mb-md-0">
+              <button className="btn btn-outline-danger w-100" onClick={handleSignOut}>
+                Sign Out
+              </button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li className="nav-item w-100 text-start mb-2 mb-md-0">
+              <Link className="btn btn-outline-primary w-100" to="/signin">Sign In</Link>
+            </li>
+            <li className="nav-item w-100 text-start mb-2 mb-md-0">
+              <Link className="btn btn-primary w-100" to="/signup">Sign Up</Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </div>
+  </div>
+</nav>
+
         </header>
 
         {/* Page container */}
