@@ -1,118 +1,296 @@
-/* ---------------- Creative Background & Section Enhancements ---------------- */
+/* ------------------------------------------------------
+   GLOBAL + ROOT
+------------------------------------------------------ */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+
+  color: #333;
+  background-color: #f9f9f9;
+
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.navbar-brand img {
+  width: 70px;   /* adjust size */
+  height: 70px;
+  object-fit: contain;
+}
+
+
 body {
-  /* subtle gradient background using your pink & light blue palette */
-  background: linear-gradient(135deg, #fff0f5 0%, #ade1ef 100%);
-  transition: background 0.5s ease-in-out;
-}
-
-/* Optional: soft animated glow for sections */
-.main-content {
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.main-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.08);
-}
-
-/* ---------------- Navbar Enhancements ---------------- */
-.navbar {
-  background: linear-gradient(90deg, #fff0f5, #f397dd);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: background 0.3s ease-in-out;
-  padding: 0.5rem 1rem;
-  flex-wrap: wrap; /* allow wrapping */
-}
-
-/* Navbar container flex */
-.navbar .container {
-  display: flex;
-  flex-wrap: wrap;           /* allow wrapping */
-  justify-content: space-between;
-  align-items: center;
+  margin: 0;
+  padding: 0;
   width: 100%;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-/* Left and right nav sections */
-.navbar-nav {
-  display: flex;
-  flex-wrap: wrap; /* wrap links */
-  gap: 0.5rem;
+/* ------------------------------------------------------
+   LINKS / HEADINGS / TEXT
+------------------------------------------------------ */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: none;
 }
 
-.navbar-nav.me-auto {
-  justify-content: flex-start;
-}
+h1 { font-size: 3.2em; }
+h2 { color: #32dde9; font-style: italic; font-family: cursive; }
+h3 { color: #ff69b4; }
+p  { color: #333; }
 
-.navbar-nav.ms-auto {
-  justify-content: flex-end;
-}
-
-/* Navbar link hover animation */
-.navbar-nav .nav-link:hover {
-  color: #ade1ef;
-  text-shadow: 0 0 8px rgba(173,225,239,0.6);
-}
-
-/* Animated underline for navbar links */
-.navbar-nav .nav-link::after {
-  content: '';
-  display: block;
-  width: 0%;
-  height: 2px;
-  background: #ff69b4;
-  transition: width 0.3s;
-}
-
-.navbar-nav .nav-link:hover::after {
-  width: 100%;
-}
-
-/* ---------------- Button Creative Touches ---------------- */
+/* ------------------------------------------------------
+   BUTTONS (GLOBAL)
+------------------------------------------------------ */
 button {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: var(--btn-bg);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  background-color: var(--btn-bg-hover);
 }
 
-/* Optional: subtle section headings pop */
-h2, h3 {
-  position: relative;
-  display: inline-block;
+/* ------------------------------------------------------
+   MAIN CONTENT WRAPPER
+------------------------------------------------------ */
+.main-content {
+  max-width: 1200px;
+  width: 95%;
+  margin: 20px auto;
+  padding: 20px;
 }
 
-h2::after, h3::after {
-  content: '';
-  display: block;
-  height: 4px;
-  width: 40%;
-  background: #ff69b4;
-  margin-top: 6px;
-  border-radius: 2px;
+/* ------------------------------------------------------
+   WELCOME / INTRO SECTIONS
+------------------------------------------------------ */
+.welcome-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff69b4;
+  text-align: center;
+  margin: 20px 0;
 }
 
+.intro-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.intro-section p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+/* ------------------------------------------------------
+   FORMS
+------------------------------------------------------ */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #fff0f5;
+  border-radius: 12px;
+  box-shadow: rgba(0,0,0,0.1) 0px 4px 12px;
+}
+
+.form-container h2,
+.form-container h3 {
+  text-align: center;
+  color: #ff69b4;
+  font-weight: 800;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.form-container textarea { min-height: 120px; resize: vertical; }
+
+.form-container button {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: #ffb6c1;
+}
+
+.form-container button:hover {
+  background-color: #ff69b4;
+}
+
+/* ------------------------------------------------------
+   🌸 PERFECT PINK NAVBAR — RESTORED CLEAN VERSION
+------------------------------------------------------ */
+
+.navbar {
+  background-color: #fff0f5;
+  border-bottom: 2px solid #ff69b4;
+  padding: 0.5rem 2rem;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
+}
+
+.collapse.navbar-collapse {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
+  align-items: center;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
+}
+
+/* left side links */
+.navbar-nav.me-auto li {
+  margin-right: 1rem;
+}
+
+.navbar-nav.me-auto .nav-link {
+  color: #000;
+  padding: 0.5rem;
+  font-weight: 500;
+}
+
+.navbar-nav.me-auto .nav-link:hover {
+  color: #ff69b4;
+}
+
+/* right side */
+.navbar-nav.ms-auto {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
+}
+
+/* welcome pink box */
+.navbar-nav.ms-auto li.nav-link {
+  background-color: #f397dd;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* signout button */
+.navbar-nav.ms-auto li button {
+  background-color: #161616;
+  color: #f5cae4;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+}
+
+.navbar-nav.ms-auto li button:hover {
+  background-color: #ff69b4;
+  color: #fff;
+}
+
+/* MOBILE NAV IMPROVEMENT */
 @media (max-width: 768px) {
-  .navbar-nav {
-    flex-direction: column !important;
-    width: 100%;
-  }
-
-  .navbar-nav li {
-    width: 100%;
-    margin-bottom: 0.4rem;
-  }
-
-  .navbar .container {
+  .navbar .container,
+  .collapse.navbar-collapse {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.7rem;
   }
+
+  .navbar-nav.me-auto,
+  .navbar-nav.ms-auto {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}
+
+/* ------------------------------------------------------
+   LIST / CARDS (Projects, Contacts, Education)
+------------------------------------------------------ */
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.list-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 26px rgba(16,24,40,0.05);
+  transition: transform 0.16s, box-shadow 0.16s;
+}
+
+.list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+}
+
+.item-title { font-weight: 900; color: #0d0e0d; }
+.item-meta  { color: #666; }
+.item-description { color: #222; }
+
+.item-actions { display: flex; gap: 0.5rem; }
+.item-actions .btn {
+  background-color: #ade1ef;
+  color: #fff;
+}
+.item-actions .btn:hover {
+  background-color: #89c9da;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+  .list-container { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------
+   SERVICES PAGE
+------------------------------------------------------ */
+.services-page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
