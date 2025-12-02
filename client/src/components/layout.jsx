@@ -11,7 +11,6 @@ const Layout = ({ children }) => {
     logout();
     navigate("/");
   };
-
   return (
     <>
       
@@ -69,5 +68,4 @@ const Layout = ({ children }) => {
     </>
   );
 };
-
 export default Layout;
