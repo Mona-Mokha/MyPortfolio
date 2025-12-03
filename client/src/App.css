@@ -14,8 +14,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .navbar-brand img {
-  width: 70px;   /* adjust size */
-  height: 70px;
+  width: 140px;   /* adjust size */
+  height: 140px;
   object-fit: contain;
 }
 
@@ -113,7 +113,10 @@ button:hover {
 .form-container h3 {
   text-align: center;
   color: #ff69b4;
-  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  font-weight: 900;
+  font-size: 1.6rem;
 }
 
 .form-container input,
@@ -125,6 +128,7 @@ button:hover {
   border-radius: 8px;
   border: 1px solid #ccc;
   background-color: #fff;
+  box-sizing: border-box;
 }
 
 .form-container textarea { min-height: 120px; resize: vertical; }
@@ -159,12 +163,6 @@ button:hover {
   flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
 }
 
-.collapse.navbar-collapse {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
-  align-items: center;
-}
 
 .navbar-nav {
   list-style: none;
@@ -172,6 +170,7 @@ button:hover {
   padding: 0;
   margin: 0;
   flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
+  
 }
 
 /* left side links */
@@ -180,72 +179,72 @@ button:hover {
 }
 
 .navbar-nav.me-auto .nav-link {
-  color: #26f3f7;
+  color: black;
   padding: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: large;
+  justify-content: flex-end; 
 }
 
 .navbar-nav.me-auto .nav-link:hover {
   color: #ff69b4;
 }
 
-/* right side */
-.navbar-nav.ms-auto {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
-}
-
-/* welcome pink box */
-.navbar-nav.ms-auto li.nav-link {
-  background-color: #f397dd;
-  color: #fff;
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
-  font-weight: 600;
-}
-
-/* signout button */
-.navbar-nav.ms-auto li button {
-  background-color: #06fcf4;
-  color: #f5cae4;
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
-}
 
 .navbar-nav.ms-auto li button:hover {
   background-color: #ff69b4;
   color: #fff;
 }
 
-/* MOBILE NAV IMPROVEMENT */
-@media (max-width: 768px) {
-  .navbar .container,
-  .collapse.navbar-collapse {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.7rem;
-  }
-
-  .navbar-nav.me-auto,
-  .navbar-nav.ms-auto {
-    width: 100%;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-}
-/* Add sliding effect for mobile menu */
-.collapse.navbar-collapse {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+/* Ensure the whole navbar behaves like Bootstrap */
+.navbar .collapse {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.collapse.navbar-collapse.show {
-  max-height: 500px; /* adjust if you have more nav items */
+/* Left menu stays left, right menu stays right */
+.navbar-nav.me-auto {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
+.navbar-nav.ms-auto {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;      /* Allows wrapping on small screens */
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Welcome box */
+.navbar-nav.ms-auto .nav-link {
+  background-color: #f397dd;
+  color: #fff !important;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Signout/Sign In/Sign Up buttons */
+.navbar-nav.ms-auto button,
+.navbar-nav.ms-auto .btn {
+  background-color: #ade1ef;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+}
+
+.navbar-nav.ms-auto button:hover,
+.navbar-nav.ms-auto .btn:hover {
+  background-color: #ff69b4;
+  color: #fff;
+}
+
 
 
 /* ------------------------------------------------------
@@ -283,11 +282,6 @@ button:hover {
   background-color: #89c9da;
 }
 
-/* mobile */
-@media (max-width: 900px) {
-  .list-container { grid-template-columns: 1fr; }
-}
-
 /* ------------------------------------------------------
    SERVICES PAGE
 ------------------------------------------------------ */
@@ -303,4 +297,19 @@ button:hover {
   gap: 1rem;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+/* Ensure full-page background except navbar */
+html, body {
+  background-color: #f9f9f9;  /* same as root */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+/* ------------------------------------------------------
+   NAVBAR COLLAPSE FIX */
+/* Ensure create buttons use the same teal tone when inside the create-action wrapper */
+.create-action .btn {
+  background-color: #ade1ef;
+  color: #fff;
+  border: none;
 }

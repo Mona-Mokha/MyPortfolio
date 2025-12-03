@@ -12,9 +12,6 @@ const Layout = ({ children }) => {
     logout();
     navigate("/");
   };
-
-  const toggleNav = () => setNavOpen(!navOpen);
-
   return (
     <>
       <header>
@@ -25,16 +22,10 @@ const Layout = ({ children }) => {
               <img src="/logo.png" alt="Logo" className="logo" />
             </Link>
 
-            {/* Hamburger toggle */}
-            <button className="navbar-toggler" type="button" onClick={toggleNav}>
-              <span className="navbar-toggler-icon">☰</span>
-            </button>
+           
 
             {/* Navbar links */}
-            <div
-              className={`collapse navbar-collapse ${navOpen ? "show" : ""}`}
-              id="navbarNav"
-            >
+            <div className={`collapse navbar-collapse ${navOpen ? 'show' : ''}`}>
               <ul className="navbar-nav me-auto">
                 <li><Link className="nav-link" to="/">Home</Link></li>
                 <li><Link className="nav-link" to="/about">About Me</Link></li>
