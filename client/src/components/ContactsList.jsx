@@ -57,7 +57,7 @@ const ContactsList = () => {
         <div className="list-container">
   {contacts.map(c => (
     <div key={c._id} className="list-card">
-      <h5 className="item-title">{c.firstname} {c.lastname}</h5>
+      <h3 className="item-title">{c.firstname} {c.lastname}</h3>
       <p className="item-meta">{c.email}</p>
       {user?.role === 'admin' && (
         <div className="item-actions">

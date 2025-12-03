@@ -1,99 +1,315 @@
+/* ------------------------------------------------------
+   GLOBAL + ROOT
+------------------------------------------------------ */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
 
-/* Navbar overall */
+  color: #333;
+  background-color: #f9f9f9;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.navbar-brand img {
+  width: 140px;   /* adjust size */
+  height: 140px;
+  object-fit: contain;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ------------------------------------------------------
+   LINKS / HEADINGS / TEXT
+------------------------------------------------------ */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: none;
+}
+
+h1 { font-size: 3.2em; }
+h2 { color: #32dde9; font-style: italic; font-family: cursive; }
+h3 { color: #ff69b4; }
+p  { color: #333; }
+
+/* ------------------------------------------------------
+   BUTTONS (GLOBAL)
+------------------------------------------------------ */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: var(--btn-bg);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+button:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+/* ------------------------------------------------------
+   MAIN CONTENT WRAPPER
+------------------------------------------------------ */
+.main-content {
+  max-width: 1200px;
+  width: 95%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* ------------------------------------------------------
+   WELCOME / INTRO SECTIONS
+------------------------------------------------------ */
+.welcome-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff69b4;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.intro-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.intro-section p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+/* ------------------------------------------------------
+   FORMS
+------------------------------------------------------ */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #fff0f5;
+  border-radius: 12px;
+  box-shadow: rgba(0,0,0,0.1) 0px 4px 12px;
+}
+
+.form-container h2,
+.form-container h3 {
+  text-align: center;
+  color: #ff69b4;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  font-weight: 900;
+  font-size: 1.6rem;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.form-container textarea { min-height: 120px; resize: vertical; }
+
+.form-container button {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: #ffb6c1;
+}
+
+.form-container button:hover {
+  background-color: #ff69b4;
+}
+
+/* ------------------------------------------------------
+   🌸 PERFECT PINK NAVBAR — RESTORED CLEAN VERSION
+------------------------------------------------------ */
+
 .navbar {
-  background-color: #fff0f5;   /* light pink background */
-  border-bottom: 2px solid #ff69b4; /* pink border */
+  background-color: #fff0f5;
+  border-bottom: 2px solid #ff69b4;
   padding: 0.5rem 2rem;
 }
 
-/* Keep container and collapse flexible and full-width */
 .navbar .container {
   display: flex;
   align-items: center;
   width: 100%;
+  flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
 }
 
-.collapse.navbar-collapse {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
 
-/* UL layout */
 .navbar-nav {
-  list-style: none;      /* remove bullets */
-  padding-left: 0;
+  list-style: none;
+  display: flex;
+  padding: 0;
   margin: 0;
-  display: flex;         /* horizontal */
-  align-items: center;
+  flex-wrap: wrap;        /* FIX RESPONSIVE WRAP */
+  
 }
 
-/* Left links (Home, About, etc.) */
+/* left side links */
 .navbar-nav.me-auto li {
   margin-right: 1rem;
 }
 
-.navbar-nav.me-auto li .nav-link {
-  color: #000;           /* black text */
-  font-weight: 500;
+.navbar-nav.me-auto .nav-link {
+  color: black;
   padding: 0.5rem;
-  font-size: 1.05rem;
-  text-decoration: none;
-}
-
-.navbar-nav.me-auto li .nav-link:hover {
-  color: #ff69b4;        /* pink on hover */
-}
-
-/* Ensure all nav links (including brand) and buttons have no underline and larger text */
-.navbar-nav .nav-link,
-.navbar-brand,
-.navbar-nav .btn {
-  text-decoration: none;
-  font-size: 1.05rem;
-}
-
-/* Buttons inside navbar: keep padding but ensure consistent size */
-.navbar-nav .btn {
-  padding: 0.45rem 0.9rem;
-}
-
-/* Right side (Welcome + Sign Out) */
-.navbar-nav.ms-auto {
-  margin-left: auto;      /* push right */
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Welcome text pink box */
-.navbar-nav.ms-auto li.nav-link {
-  background-color: #f397dd;  /* pink box */
-  color: #fff;
-  border-radius: 8px;
-  padding: 0.5rem 0.8rem;
   font-weight: 600;
+  font-size: large;
+  justify-content: flex-end; 
 }
 
-/* Sign Out button styling */
-.navbar-nav.ms-auto li button {
-  padding: 0.5rem 0.8rem;
-  font-weight: 600;
-  border-radius: 8px;
-  background-color: #161616;
-  color: #f5cae4;
-  border: none;
-  cursor: pointer;
+.navbar-nav.me-auto .nav-link:hover {
+  color: #ff69b4;
 }
+
 
 .navbar-nav.ms-auto li button:hover {
   background-color: #ff69b4;
   color: #fff;
 }
 
-/* Responsive nice spacing */
-@media (max-width: 768px) {
-  .project-card {
-    padding: 16px;
-  }
+/* Ensure the whole navbar behaves like Bootstrap */
+.navbar .collapse {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Left menu stays left, right menu stays right */
+.navbar-nav.me-auto {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.navbar-nav.ms-auto {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;      /* Allows wrapping on small screens */
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Welcome box */
+.navbar-nav.ms-auto .nav-link {
+  background-color: #f397dd;
+  color: #fff !important;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Signout/Sign In/Sign Up buttons */
+.navbar-nav.ms-auto button,
+.navbar-nav.ms-auto .btn {
+  background-color: #ade1ef;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+}
+
+.navbar-nav.ms-auto button:hover,
+.navbar-nav.ms-auto .btn:hover {
+  background-color: #ff69b4;
+  color: #fff;
+}
+
+
+
+/* ------------------------------------------------------
+   LIST / CARDS (Projects, Contacts, Education)
+------------------------------------------------------ */
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.list-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 26px rgba(16,24,40,0.05);
+  transition: transform 0.16s, box-shadow 0.16s;
+}
+
+.list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+}
+
+.item-title { font-weight: 900; color: #0d0e0d; }
+.item-meta  { color: #666; }
+.item-description { color: #222; }
+
+.item-actions { display: flex; gap: 0.5rem; }
+.item-actions .btn {
+  background-color: #ade1ef;
+  color: #fff;
+}
+.item-actions .btn:hover {
+  background-color: #89c9da;
+}
+
+/* ------------------------------------------------------
+   SERVICES PAGE
+------------------------------------------------------ */
+.services-page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+/* Ensure full-page background except navbar */
+html, body {
+  background-color: #f9f9f9;  /* same as root */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+/* ------------------------------------------------------
+   NAVBAR COLLAPSE FIX */
+/* Ensure create buttons use the same teal tone when inside the create-action wrapper */
+.create-action .btn {
+  background-color: #ade1ef;
+  color: #fff;
+  border: none;
 }

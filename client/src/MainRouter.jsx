@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import ContactsList from './components/ContactsList';
-import ContactForm from './components/ContactForm';
-import EducationForm from './components/EducationForm';
-import EducationsList from './components/EducationsList';
-import Layout from './components/Layout';
-import Home from './components/Home';
-import About from './components/About';
-import ProjectsList from './components/ProjectsList';
-import ProjectForm from './components/ProjectForm';
-import Services from './components/Services';
-import Signin from './components/Signin';
-import Signup from './components/Signup';
+import ContactsList from './components/ContactsList.jsx';
+import ContactForm from './components/ContactForm.jsx';
+import EducationForm from './components/EducationForm.jsx';
+import EducationsList from './components/EducationsList.jsx';
+import Layout from './components/Layout.jsx';
+import Home from './components/Home.jsx';
+import About from './components/About.jsx';
+import ProjectsList from './components/ProjectsList.jsx';
+import ProjectForm from './components/ProjectForm.jsx';
+import Services from './components/Services.jsx';
+import Signin from './components/Signin.jsx';
+import Signup from './components/Signup.jsx';
 
 
 
